@@ -10,5 +10,23 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Light gray background for headers */
+}
+
+td {
+    background-color: #ffffff; /* White background for non-editable cells */
+}
+
+td[contenteditable="true"] {
+    background-color: #e8f0fe;  /* Light blue background for editable cells */
+    cursor: text;
+}
+
+td[contenteditable="true"]:hover {
+    background-color: #d6e4fd;  /* Slightly darker blue on hover for editable cells */
+}
+
+u {
+    color: blue;
+    font-weight: bold;
 }
