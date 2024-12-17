@@ -10,20 +10,34 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4; /* Light gray background for headers */
+    background-color: #f4f4f4; /* Light gray for headers not specifically colored */
+    text-align: center;
+    font-weight: bold;
 }
 
-td {
-    background-color: #ffffff; /* White background for non-editable cells */
+th.review, th.trueSentiment {
+    background-color: #b2d8b2; /* Light green */
+}
+
+th.cbest, th.condition {
+    background-color: #fff2cc; /* Light yellow */
+}
+
+th.predictedSentiment {
+    background-color: #cce5ff; /* Light blue */
+}
+
+th.correctness {
+    background-color: #e8ccff; /* Light purple */
 }
 
 td[contenteditable="true"] {
-    background-color: #e8f0fe;  /* Light blue background for editable cells */
+    background-color: #f0f0f0; /* Light gray for editable cells */
     cursor: text;
 }
 
 td[contenteditable="true"]:hover {
-    background-color: #d6e4fd;  /* Slightly darker blue on hover for editable cells */
+    background-color: #e0e0e0; /* Slightly darker gray on hover */
 }
 
 u {
