@@ -10,18 +10,43 @@
     <table id="editableTable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Occupation</th>
+                <th>Index</th>
+                <th>Review</th>
+                <th>True Sentiment</th>
+                <th>Count of "best" (Cbest)</th>
+                <th>Condition: Which condition is matched?</th>
+                <th>Predicted Sentiment (S)</th>
+                <th>Correctness: Is the prediction correct?</th>
             </tr>
         </thead>
         <tbody>
             <tr contenteditable="true">
-                <td>John Doe</td>
-                <td>28</td>
-                <td>Developer</td>
+                <td>A</td>
+                <td>Came here with my besties. I'll say there are better places.</td>
+                <td>Negative</td>
+                <td>o</td>
+                <td>Cbest = 0</td>
+                <td>Negative</td>
+                <td>Correct</td>
             </tr>
-            <!-- More rows can be added here -->
+            <tr contenteditable="true">
+                <td>B</td>
+                <td>Hands down, Mineo's has the <u>best</u> pizza in Pittsburgh, if not the country.</td>
+                <td>Positive</td>
+                <td>1</td>
+                <td>Cbest = 1</td>
+                <td>Positive</td>
+                <td>Correct</td>
+            </tr>
+            <tr contenteditable="true">
+                <td>C</td>
+                <td>Their pizza is definitely some of the <u>best</u> around, and the white pizza is one of the <u>best</u> items on the menu.</td>
+                <td>Positive</td>
+                <td>2</td>
+                <td>None</td>
+                <td>Undefined</td>
+                <td>Incorrect</td>
+            </tr>
         </tbody>
     </table>
     <script src="script.js"></script>
