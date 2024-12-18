@@ -8,6 +8,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<script type="text/javascript" src="iframe-phone.js"></script>
+<script type="text/javascript">
+	var phone = iframePhone.getIFrameEndpoint();
+	phone.addListener('initInteractive', function (data) {
+		var studentResponse = data.interactiveState;
+ 	  	if (studentResponse) {
+			if (typeof(studentResponse) === "string") studentResponse = JSON.parse(studentResponse);
+	  		restoreState(studentResponse);
+		}
+	});
+	phone.addListener('getInteractiveState', function () { 
+	  	var state = encodeState();
+ 	  	phone.post('interactiveState', state);
+	});
+	phone.initialize();
+	phone.post('supportedFeatures', {
+  		apiVersion: 1,
+  		features: {
+    		interactiveState: true
+  		}
+	});	
+</script>
+<script>
+	function restoreState(studentData) {
+		if (studentData){
+			document.getElementById('saveContent').innerHTML = state;
+		}
+	}
+	function encodeState() {
+		var state = document.getElementById('saveContent').innerHTML;
+		return state;
+	}
+</script>
+    <button id="addRowButton">Add Row</button><button id="exportButton">Export Table as Image</button>
+<div id="saveContent">
     <table id="editableTable">
         <thead>
             <tr>
