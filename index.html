@@ -8,37 +8,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<script type="text/javascript" src="iframe-phone.js"></script>
-<script type="text/javascript">
+<script type=“text/javascript” src=“lib/vendor.js”></script>
+<script type=“text/javascript” src=“lib/shutterbug.js”></script>
+<script type=“text/javascript” src=“lib/iframe-phone.js”></script>
+<script type=“text/javascript”>
 	var phone = iframePhone.getIFrameEndpoint();
-	phone.addListener('initInteractive', function (data) {
-		var studentResponse = data.interactiveState;
- 	  	if (studentResponse) {
-	  		restoreState(studentResponse);
-		}
+	phone.addListener(‘getLearnerUrl’, function () {
+ 	  console.log(“iframe received message: getLearnerUrl”);
+	  console.log(“sending back “+window.location.href);
+ 	  phone.post(‘setLearnerUrl’, window.location.href);
 	});
-	phone.addListener('getInteractiveState', function () { 
-	  	var state = encodeState();
- 	  	phone.post('interactiveState', state);
+	phone.addListener(‘getInteractiveState’, function () {
+	  var state = document.getElementById(‘saveContent’).innerHTML;
+ 	  console.log(“iframe received message: getInteractiveState”);
+	  console.log(“sending back “+state);
+ 	  phone.post(‘interactiveState’, state);
+	});
+	phone.addListener(‘loadInteractive’, function (state) {
+ 	  console.log(“iframe received message: loadInteractive”);
+	  console.log(“recieving “+state);
+ 	  document.getElementById(‘saveContent’).innerHTML = state;
 	});
 	phone.initialize();
-	phone.post('supportedFeatures', {
-  		apiVersion: 1,
-  		features: {
-    		interactiveState: true
-  		}
-	});	
-</script>
-<script>
-	function restoreState(studentData) {
-		if (studentData){
-			document.getElementById('saveContent').innerHTML = state;
-		}
-	}
-	function encodeState() {
-		var state = document.getElementById('saveContent').innerHTML;
-		return state;
-	}
 </script>
 <!--button id="addRowButton">Add Row</button-->
 <button id="exportButton">Export Table as Image</button>
