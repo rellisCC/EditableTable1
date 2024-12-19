@@ -8,32 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<script type=“text/javascript” src=“vendor.js”></script>
-<script type=“text/javascript” src=“shutterbug.js”></script>
-<script type=“text/javascript” src=“iframe-phone.js”></script>
-<script type=“text/javascript”>
-	var phone = iframePhone.getIFrameEndpoint();
-	phone.addListener(‘getLearnerUrl’, function () {
- 	  console.log(“iframe received message: getLearnerUrl”);
-	  console.log(“sending back “+window.location.href);
- 	  phone.post(‘setLearnerUrl’, window.location.href);
-	});
-	phone.addListener(‘getInteractiveState’, function () {
-	  var state = document.getElementById(‘saveContent’).innerHTML;
- 	  console.log(“iframe received message: getInteractiveState”);
-	  console.log(“sending back “+state);
- 	  phone.post(‘interactiveState’, state);
-	});
-	phone.addListener(‘loadInteractive’, function (state) {
- 	  console.log(“iframe received message: loadInteractive”);
-	  console.log(“recieving “+state);
- 	  document.getElementById(‘saveContent’).innerHTML = state;
-	});
-	phone.initialize();
-</script>
-<!--button id="addRowButton">Add Row</button-->
-<button id="exportButton">Export Table as Image</button>
-<div id="saveContent">
     <table id="editableTable">
         <thead>
             <tr>
@@ -74,13 +48,11 @@
                 <td contenteditable="true"> </td>
                 <td contenteditable="true"> </td>
             </tr>
+        <!--button id="addRowButton">Add Row</button-->
+        <button id="exportButton">Export Table as Image</button>
         </tbody>
     </table>
-</div>
-</body>
-<script type=“text/javascript”>
-    Shutterbug.enable(‘#editableTable’);
-  </script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+</body>
 </html>
