@@ -11,6 +11,7 @@ document.getElementById('addRowButton').addEventListener('click', function() {
 });
 // Add event listener for the export button
 document.getElementById('exportButton').addEventListener('click', function() {
+    console.log("Button clicked!"); // This should appear in the console when you click the button
     const table = document.getElementById('editableTable');
     html2canvas(table).then(canvas => {
         // Create an image from the canvas
