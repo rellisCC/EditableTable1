@@ -14,7 +14,6 @@
 	phone.addListener('initInteractive', function (data) {
 		var studentResponse = data.interactiveState;
  	  	if (studentResponse) {
-			if (typeof(studentResponse) === "string") studentResponse = JSON.parse(studentResponse);
 	  		restoreState(studentResponse);
 		}
 	});
