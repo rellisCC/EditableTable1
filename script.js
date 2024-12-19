@@ -24,4 +24,4 @@ document.getElementById('exportButton').addEventListener('click', function() {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     });
-})
+});
